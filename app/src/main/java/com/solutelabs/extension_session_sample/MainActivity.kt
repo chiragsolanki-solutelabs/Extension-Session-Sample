@@ -2,18 +2,23 @@ package com.solutelabs.extension_session_sample
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import kotlinx.android.synthetic.main.activity_main.doneButton
 
 class MainActivity : AppCompatActivity() {
+
+    val datafound: Boolean = true
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val myString = "Hello This is Chirag Here"
-        myString.printLog()
+        doneButton.gone()
+        doneButton.visible()
 
-        val student = Student("Chirag Solanki", "Solutelabs")
-        student.printLog()
+        doneButton goneIf datafound
+        doneButton visibleIf datafound
+
     }
 }
 
-data class Student(val name: String, val schoolName: String)
