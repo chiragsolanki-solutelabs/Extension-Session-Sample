@@ -6,18 +6,14 @@ import kotlinx.android.synthetic.main.activity_main.doneButton
 
 class MainActivity : AppCompatActivity() {
 
-    val datafound: Boolean = true
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        doneButton.gone()
-        doneButton.visible()
-
-        doneButton goneIf datafound
-        doneButton visibleIf datafound
+        toast("This is Solutelabs Sample")
+        toast(R.string.sample_text)
 
     }
 }
