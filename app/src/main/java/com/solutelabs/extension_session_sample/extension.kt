@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
+import com.google.android.material.snackbar.Snackbar
 
 
 fun Any?.printLog(tag: String = "Debug_Tag") {
@@ -45,4 +46,14 @@ fun Activity.toast(message: String) {
 
 fun Activity.toast(@StringRes message: Int) {
     Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+}
+
+// --------- Snackbar Extension ------------
+
+fun View.snackbar(message: String, duration: Int = Snackbar.LENGTH_LONG) {
+    Snackbar.make(this, message, duration).show()
+}
+
+fun View.snackbar(@StringRes message: Int, duration: Int = Snackbar.LENGTH_LONG) {
+    Snackbar.make(this, message, duration).show()
 }
