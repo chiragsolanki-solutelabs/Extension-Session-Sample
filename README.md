@@ -1,5 +1,14 @@
 # Extension-Session-Sample
 
+
+### Generic Extension
+
+
+Extension  | Description
+------------------------------ | ------------------------------
+#### <a href="/app/utils/log_extension.pdf" target="_blank">Logcat Extension</a> | Usefull to print log 
+
+
 #### <a href="/app/utils/log_extension.pdf" target="_blank">Logcat Extension</a>
 #### <a href="/app/utils/visibility_extension.jpg" target="_blank">Visibility Extension</a>
 #### <a href="/app/utils/toast_extension.jpg" target="_blank">Toast Extension</a>
