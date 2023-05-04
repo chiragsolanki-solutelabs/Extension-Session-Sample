@@ -2,6 +2,7 @@
 
 
 ### Generic Extension
+---------------------------
 
 
 | Extension                                                                                                             | Description                                                                                                                                                                               |
