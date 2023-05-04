@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         val viewBinding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
-        viewBinding.doneButton.snackbar("This is developer Testing")
+        hideKeyboard()
 
     }
 }

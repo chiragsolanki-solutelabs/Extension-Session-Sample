@@ -3,6 +3,7 @@ package com.solutelabs.extension_session_sample
 import android.app.Activity
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
@@ -56,4 +57,21 @@ fun View.snackbar(message: String, duration: Int = Snackbar.LENGTH_LONG) {
 
 fun View.snackbar(@StringRes message: Int, duration: Int = Snackbar.LENGTH_LONG) {
     Snackbar.make(this, message, duration).show()
+}
+
+// --------- Hide Keyboard Extension ------------
+fun Activity.hideKeyboard() {
+    val imm: InputMethodManager =
+        getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+    val view = currentFocus ?: View(this)
+    imm.hideSoftInputFromWindow(view.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+}
+
+fun Fragment.hideKeyboard() {
+    activity?.apply {
+        val imm: InputMethodManager =
+            getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        val view = currentFocus ?: View(this)
+        imm.hideSoftInputFromWindow(view.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+    }
 }
