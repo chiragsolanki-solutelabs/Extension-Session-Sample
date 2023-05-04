@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.solutelabs.extension_session_sample.databinding.ActivityMainBinding
+import java.util.Date
 
 
 class MainActivity : AppCompatActivity() {
@@ -15,12 +16,10 @@ class MainActivity : AppCompatActivity() {
         val viewBinding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
-        val isValidNumber = "1234".isDigitOnly // Return true
-        val isValid = "1234abc".isDigitOnly // Return false
-        val isOnlyAlphabetic = "abcABC".isAlphabeticOnly // Return true
-        val isOnlyAlphabetic2 = "abcABC123".isAlphabeticOnly // Return false
-        val isOnlyAlphanumeric = "abcABC123".isAlphanumericOnly // Return true
-        val isOnlyAlphanumeric2 = "abcABC@123.".isAlphanumericOnly // Return false
+        val currentDate = Date().toStringFormat()  //2023-05-04 14:02:17
+        val currentDate2 = Date().toStringFormat(format = "dd-MM-yyyy") //04-05-2023
+        val date = "2023-01-01".toDate(format = "yyyy-MM-dd")
+
 
     }
 }

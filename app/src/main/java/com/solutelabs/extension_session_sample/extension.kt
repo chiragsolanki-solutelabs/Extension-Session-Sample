@@ -8,6 +8,9 @@ import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 
 fun Any?.printLog(tag: String = "Debug_Tag") {
@@ -86,3 +89,14 @@ val String.isAlphabeticOnly: Boolean
 
 val String.isAlphanumericOnly: Boolean
     get() = matches(Regex("^[a-zA-Z\\d]*\$"))
+
+// --------- Date formatter extension Extension ------------
+fun String.toDate(format: String = "yyyy-MM-dd HH:mm:ss"): Date? {
+    val dateFormatter = SimpleDateFormat(format, Locale.getDefault())
+    return dateFormatter.parse(this)
+}
+
+fun Date.toStringFormat(format: String = "yyyy-MM-dd HH:mm:ss"): String {
+    val dateFormatter = SimpleDateFormat(format, Locale.getDefault())
+    return dateFormatter.format(this)
+}
