@@ -4,6 +4,8 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.app.Activity
+import android.content.pm.PackageManager
+import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -141,3 +143,22 @@ fun <T> RecyclerView.bindData(
     }
 }
 
+// --------- Permission Extension ------------
+
+fun Activity.withPermissions(vararg permissions: String, callback: () -> Unit) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        val ungrantedPermissions = permissions.filter {
+            checkSelfPermission(it) == PackageManager.PERMISSION_DENIED
+        }
+        if (ungrantedPermissions.isEmpty()) {
+            // All permissions are granted, execute callback
+            callback()
+        } else {
+            // Request permissions
+            requestPermissions(ungrantedPermissions.toTypedArray(), 0)
+        }
+    } else {
+        // Pre-Marshmallow devices, execute callback
+        callback()
+    }
+}
