@@ -19,6 +19,7 @@
 ### Advance Extension
 ---------------------------
 
-| Extension                                                                          | Description                                                                                                        |
-|------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|
-| <a href="/app/utils/event_extension.pdf" target="_blank">Click Event Extension</a> | This function extends the View class and takes a lambda expression that will be executed when the view is clicked. |
+| Extension                                                                                 | Description                                                                                                                                                                                                                                                                        |
+|-------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <a href="/app/utils/event_extension.pdf" target="_blank">Click Event Extension</a>        | This function extends the View class and takes a lambda expression that will be executed when the view is clicked.                                                                                                                                                                 |
+| <a href="/app/utils/recycleview_extension.pdf" target="_blank">Recycle View Extension</a> | RecyclerView as a higher-order function is to create a function that takes in a list of items and a function to bind each item to a view holder, and returns a configured RecyclerView adapter.We can create a RecyclerView and populate it with data using a single function call |
