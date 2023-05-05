@@ -1,5 +1,8 @@
 package com.solutelabs.extension_session_sample
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ObjectAnimator
 import android.app.Activity
 import android.util.Log
 import android.view.View
@@ -11,6 +14,8 @@ import com.google.android.material.snackbar.Snackbar
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import kotlin.reflect.KProperty
+import kotlin.reflect.KProperty0
 
 
 fun Any?.printLog(tag: String = "Debug_Tag") {
@@ -99,4 +104,8 @@ fun String.toDate(format: String = "yyyy-MM-dd HH:mm:ss"): Date? {
 fun Date.toStringFormat(format: String = "yyyy-MM-dd HH:mm:ss"): String {
     val dateFormatter = SimpleDateFormat(format, Locale.getDefault())
     return dateFormatter.format(this)
+}
+
+fun View.onClick(action: () -> Unit) {
+    setOnClickListener { action() }
 }

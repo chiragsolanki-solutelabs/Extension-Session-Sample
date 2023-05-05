@@ -18,3 +18,7 @@
 
 ### Advance Extension
 ---------------------------
+
+| Extension                                                                          | Description                                                                                                        |
+|------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|
+| <a href="/app/utils/event_extension.pdf" target="_blank">Click Event Extension</a> | This function extends the View class and takes a lambda expression that will be executed when the view is clicked. |
