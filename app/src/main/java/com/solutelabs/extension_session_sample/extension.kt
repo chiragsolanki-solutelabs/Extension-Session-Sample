@@ -5,11 +5,14 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.app.Activity
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -95,7 +98,7 @@ val String.isAlphabeticOnly: Boolean
 val String.isAlphanumericOnly: Boolean
     get() = matches(Regex("^[a-zA-Z\\d]*\$"))
 
-// --------- Date formatter extension Extension ------------
+// --------- Date formatter Extension ------------
 fun String.toDate(format: String = "yyyy-MM-dd HH:mm:ss"): Date? {
     val dateFormatter = SimpleDateFormat(format, Locale.getDefault())
     return dateFormatter.parse(this)
@@ -106,6 +109,35 @@ fun Date.toStringFormat(format: String = "yyyy-MM-dd HH:mm:ss"): String {
     return dateFormatter.format(this)
 }
 
+// --------- Click event Extension ------------
 fun View.onClick(action: () -> Unit) {
     setOnClickListener { action() }
 }
+
+// --------- Recycleview Extension ------------
+fun <T> RecyclerView.bindData(
+    data: List<T>,
+    layoutRes: Int,
+    bindFunc: (View, T) -> Unit,
+    clickListener: ((T) -> Unit)? = null
+) {
+    adapter = object : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+            val view = LayoutInflater.from(parent.context).inflate(layoutRes, parent, false)
+            return ViewHolder(view)
+        }
+
+        override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+            val item = data[position]
+            bindFunc(holder.itemView, item)
+            clickListener?.let { listener ->
+                holder.itemView.setOnClickListener { listener(item) }
+            }
+        }
+
+
+        override fun getItemCount() = data.size
+        inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    }
+}
+
