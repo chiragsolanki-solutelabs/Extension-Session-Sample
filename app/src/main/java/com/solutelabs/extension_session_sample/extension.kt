@@ -6,6 +6,8 @@ import android.animation.ObjectAnimator
 import android.app.Activity
 import android.content.pm.PackageManager
 import android.os.Build
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -161,4 +163,13 @@ fun Activity.withPermissions(vararg permissions: String, callback: () -> Unit) {
         // Pre-Marshmallow devices, execute callback
         callback()
     }
+}
+
+// --------- Threading Extension ------------
+fun <T> runOnBackgroundThread(backgroundFunc: () -> T, callback: (T) -> Unit) {
+    val handler = Handler(Looper.getMainLooper())
+    Thread {
+        val result = backgroundFunc()
+        handler.post { callback(result) }
+    }.start()
 }
