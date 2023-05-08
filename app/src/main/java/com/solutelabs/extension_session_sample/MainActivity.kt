@@ -14,17 +14,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(viewBinding.root)
 
         viewBinding.buttonMain.onClick {
-            withPermissions(
-                android.Manifest.permission.READ_EXTERNAL_STORAGE,
-                android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                android.Manifest.permission.CAMERA,
-            ) {
-                toast("Permission Granted")
-            }
+
+            runOnBackgroundThread(
+                { Thread.sleep(5000) },
+                { toast("Task Done") }
+            )
 
         }
-
-
 
 
     }
